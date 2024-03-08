@@ -4,15 +4,16 @@ import express from 'express';
 import { Sequelize } from 'sequelize-typescript';
 import taskRouter from '../routes/task.Router';
 
-const sequelize = new Sequelize({
-  dialect: 'mysql',
-  host: 'localhost',
-  port: 3306,
-  username: 'root',
-  password: '', // Replace with your actual password
-  database: 'db_todolit_dev',
-  models: [__dirname + '/models'],
-});
+const sequelize = new Sequelize(
+  'db_todolit_dev',
+  'root',
+  '',
+  {
+    port: 3306,
+    dialect: 'mysql',
+    host: 'localhost',
+  },
+);
 
 const app = express();
 app.use(express.json());
@@ -25,8 +26,11 @@ app.use((req, res, next) => {
 
 (async () => {
   try {
-    await sequelize.authenticate();
-    console.log('Connection has been established successfully.');
+    await sequelize.authenticate().then(() => {
+      console.log('Connection has been established successfully.');
+   }).catch((error) => {
+      console.error('Unable to connect to the database: ', error);
+   });
 
     app.use('/api/v1/tasks', taskRouter);
 

@@ -1,40 +1,21 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
 // models/task.model.ts
 var sequelize_1 = require("sequelize");
-var sequelize_typescript_1 = require("sequelize-typescript");
-var sequelize = new sequelize_typescript_1.Sequelize({
+var sequelize = new sequelize_1.Sequelize('db_todolit_dev', 'root', '', {
+    port: 3306,
     dialect: 'mysql',
     host: 'localhost',
-    port: 3306,
     username: 'root',
     password: '',
-    database: 'db_todolit_dev',
-    // models: [__dirname + '/models'],
+    database: 'db_todolit_dev'
 });
-var Task = /** @class */ (function (_super) {
-    __extends(Task, _super);
-    function Task() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    return Task;
-}(sequelize_1.Model));
-Task.init({
+// class Task extends Model {
+//   public id!: number;
+//   public name!: string;
+//   public status!: boolean;
+// }
+var Task = sequelize.define('Task', {
     id: {
         type: sequelize_1.DataTypes.INTEGER,
         autoIncrement: true,
@@ -50,9 +31,7 @@ Task.init({
         allowNull: true,
     },
 }, {
-    sequelize: sequelize,
-    modelName: 'Task',
+    modelName: 'tasks',
     timestamps: false,
 });
-
 exports.default = Task;

@@ -1,23 +1,26 @@
 // models/task.model.ts
-import { DataTypes, Model  } from 'sequelize';
-import { Sequelize } from 'sequelize-typescript';
-const sequelize = new Sequelize({
+import { DataTypes, Model, Sequelize  } from 'sequelize';
+const sequelize = new Sequelize(
+  'db_todolit_dev',
+  'root',
+  '',
+  {
+    port: 3306,
     dialect: 'mysql',
     host: 'localhost',
-    port: 3306,
     username: 'root',
     password: '',
-    database: 'db_todolit_dev',
-    // models: [__dirname + '/models'],
-  });
+    database: 'db_todolit_dev'
+  },
+);
 
-class Task extends Model {
-  public id!: number;
-  public name!: string;
-  public status!: boolean;
-}
+// class Task extends Model {
+//   public id!: number;
+//   public name!: string;
+//   public status!: boolean;
+// }
 
-Task.init(
+const Task = sequelize.define('Task',
   {
     id: {
       type: DataTypes.INTEGER,
@@ -35,8 +38,7 @@ Task.init(
     },
   },
   {
-    sequelize,
-    modelName: 'Task',
+    modelName: 'tasks',
     timestamps: false,
   }
 );

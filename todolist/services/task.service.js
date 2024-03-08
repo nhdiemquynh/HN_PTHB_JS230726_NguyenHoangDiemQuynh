@@ -52,14 +52,18 @@ var getTaskById = function (id) { return __awaiter(void 0, void 0, void 0, funct
 }); };
 exports.getTaskById = getTaskById;
 var addTask = function (name, status) { return __awaiter(void 0, void 0, void 0, function () {
+    var updateStatus;
     return __generator(this, function (_a) {
-        return [2 /*return*/, task_model_1.default.create({ name: name, status: status })];
+        updateStatus = status ? 1 : 0;
+        return [2 /*return*/, task_model_1.default.create({ name: name, updateStatus: updateStatus })];
     });
 }); };
 exports.addTask = addTask;
 var updateTask = function (id, name, status) { return __awaiter(void 0, void 0, void 0, function () {
+    var updateStatus;
     return __generator(this, function (_a) {
-        return [2 /*return*/, task_model_1.default.update({ name: name, status: status }, { where: { id: id }, individualHooks: true })];
+        updateStatus = status ? 1 : 0;
+        return [2 /*return*/, task_model_1.default.update({ name: name, updateStatus: updateStatus }, { where: { id: id }, individualHooks: true })];
     });
 }); };
 exports.updateTask = updateTask;

@@ -39,27 +39,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteTaskController = exports.updateTaskController = exports.addTaskController = exports.getTaskByIdController = exports.getAllTasksController = void 0;
 var task_service_1 = require("../services/task.service");
 var getAllTasksController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var tasks, error_1;
+    var tasks;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, (0, task_service_1.getAllTasks)()];
+            case 0: return [4 /*yield*/, (0, task_service_1.getAllTasks)()];
             case 1:
                 tasks = _a.sent();
                 res.status(200).json(tasks);
-                return [3 /*break*/, 3];
-            case 2:
-                error_1 = _a.sent();
-                res.status(500).json({ error: 'Internal server error' });
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
+                return [2 /*return*/];
         }
     });
 }); };
 exports.getAllTasksController = getAllTasksController;
 var getTaskByIdController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var task, error_2;
+    var task, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -75,7 +68,7 @@ var getTaskByIdController = function (req, res) { return __awaiter(void 0, void 
                 }
                 return [3 /*break*/, 3];
             case 2:
-                error_2 = _a.sent();
+                error_1 = _a.sent();
                 res.status(500).json({ error: 'Internal server error' });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
@@ -84,7 +77,7 @@ var getTaskByIdController = function (req, res) { return __awaiter(void 0, void 
 }); };
 exports.getTaskByIdController = getTaskByIdController;
 var addTaskController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, name_1, status_1, newTask, error_3;
+    var _a, name_1, status_1, newTask, error_2;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
@@ -96,7 +89,7 @@ var addTaskController = function (req, res) { return __awaiter(void 0, void 0, v
                 res.status(201).json(newTask);
                 return [3 /*break*/, 3];
             case 2:
-                error_3 = _b.sent();
+                error_2 = _b.sent();
                 res.status(500).json({ error: 'Internal server error' });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
@@ -105,7 +98,7 @@ var addTaskController = function (req, res) { return __awaiter(void 0, void 0, v
 }); };
 exports.addTaskController = addTaskController;
 var updateTaskController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var id, _a, name_2, status_2, isDone, updatedTask, error_4;
+    var id, _a, name_2, status_2, isDone, updatedTask, error_3;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
@@ -123,7 +116,7 @@ var updateTaskController = function (req, res) { return __awaiter(void 0, void 0
                 }
                 return [3 /*break*/, 3];
             case 2:
-                error_4 = _b.sent();
+                error_3 = _b.sent();
                 res.status(500).json({ error: 'Internal server error' });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
@@ -132,7 +125,7 @@ var updateTaskController = function (req, res) { return __awaiter(void 0, void 0
 }); };
 exports.updateTaskController = updateTaskController;
 var deleteTaskController = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var id, deletedTask, error_5;
+    var id, deletedTask, error_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -149,7 +142,7 @@ var deleteTaskController = function (req, res) { return __awaiter(void 0, void 0
                 }
                 return [3 /*break*/, 3];
             case 2:
-                error_5 = _a.sent();
+                error_4 = _a.sent();
                 res.status(500).json({ error: 'Internal server error' });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];

@@ -9,12 +9,12 @@ import {
 } from '../services/task.service';
 
 export const getAllTasksController = async (req: Request, res: Response) => {
-  try {
+  // try {
     const tasks = await getAllTasks();
     res.status(200).json(tasks);
-  } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
-  }
+  // } catch (error) {
+  //   res.status(500).json({ error: error });
+  // }
 };
 
 export const getTaskByIdController = async (req: Request, res: Response) => {

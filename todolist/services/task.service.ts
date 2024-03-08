@@ -10,12 +10,14 @@ export const getTaskById = async (id: number) => {
 };
 
 export const addTask = async (name: string, status: boolean) => {
-  return Task.create({ name, status });
+  let updateStatus = status ? 1 : 0;
+  return Task.create({ name, updateStatus });
 };
 
 export const updateTask = async (id: number, name: string, status: boolean) => {
+  let updateStatus = status ? 1 : 0;
   return Task.update(
-    { name, status },
+    { name, updateStatus },
     { where: { id }, individualHooks: true }
   );
 };

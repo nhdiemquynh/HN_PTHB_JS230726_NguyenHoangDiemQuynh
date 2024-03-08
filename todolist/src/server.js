@@ -41,14 +41,10 @@ var express = require("express");
 // import express from 'express';
 var sequelize_typescript_1 = require("sequelize-typescript");
 var task_Router_1 = require("../routes/task.Router");
-var sequelize = new sequelize_typescript_1.Sequelize({
+var sequelize = new sequelize_typescript_1.Sequelize('db_todolit_dev', 'root', '', {
+    port: 3306,
     dialect: 'mysql',
     host: 'localhost',
-    port: 3306,
-    username: 'root',
-    password: '', // Replace with your actual password
-    database: 'db_todolit_dev',
-    models: [__dirname + '/models'],
 });
 var app = express();
 app.use(express.json());
@@ -64,7 +60,11 @@ app.use(function (req, res, next) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, sequelize.authenticate()];
+                return [4 /*yield*/, sequelize.authenticate().then(function () {
+                        console.log('Connection has been established successfully.');
+                    }).catch(function (error) {
+                        console.error('Unable to connect to the database: ', error);
+                    })];
             case 1:
                 _a.sent();
                 console.log('Connection has been established successfully.');
