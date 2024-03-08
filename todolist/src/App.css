@@ -103,3 +103,45 @@ span {
   margin-right: 1rem;
   flex-grow: 1;
 }
+.App-container {
+  max-width: 600px;
+  margin: auto;
+  background: #ff6a6a;
+  box-shadow: -10px -11px 0px #ccc;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.App-container main ul {
+  max-height: 58vh;
+  overflow: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+header.App-header h1 {
+  margin: 0;
+}
+
+.App-container main ul li {
+  padding: 5px 20px;
+}
+
+.App-container main ul li button {
+  background-color: #cb1b1b;
+}
+
+.App-container main ul li input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: #fff;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.App-container main ul li span {
+  text-align: left;
+}

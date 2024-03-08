@@ -11,8 +11,8 @@ interface TodoItemProps {
 const TodoItem: React.FC<TodoItemProps> = ({ text, status, onToggle, onDelete }) => {
   return (
     <div style={{ textDecoration: status ? 'line-through' : 'none' }}>
-      <input type="checkbox" checked={status} onChange={onToggle} />
       <span>{text}</span>
+      <input type="checkbox" checked={status} onChange={onToggle} />
       <button onClick={onDelete}>Delete</button>
     </div>
   );

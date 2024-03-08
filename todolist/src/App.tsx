@@ -1,45 +1,3 @@
-// // src/App.tsx
-// import React, { useState } from 'react';
-// import TodoList from './TodoList';
-
-// function App() {
-//   const [items, setItems] = useState<
-//     { id: number; text: string; status: boolean }[]
-//   >([]);
-
-//   const addItem = (text: string) => {
-//     setItems((prevItems) => [
-//       ...prevItems,
-//       { id: Date.now(), text, status: false },
-//     ]);
-//   };
-
-//   const toggleItem = (id: number) => {
-//     setItems((prevItems) =>
-//       prevItems.map((item) =>
-//         item.id === id ? { ...item, status: !item.status } : item
-//       )
-//     );
-//   };
-
-//   const deleteItem = (id: number) => {
-//     setItems((prevItems) => prevItems.filter((item) => item.id !== id));
-//   };
-
-//   return (
-//     <div className="App">
-//       <TodoList
-//         items={items}
-//         onAdd={addItem}
-//         onToggle={toggleItem}
-//         onDelete={deleteItem}
-//       />
-//     </div>
-//   );
-// }
-
-// export default App;
-
 
 import React, { useState, useEffect } from 'react';
 import './App.css';
@@ -105,34 +63,36 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Todo List</h1>
-      </header>
-      <main>
-        <form>
-          <input type="text" placeholder="Add a task" onChange={(e) => handleInputChange(e)}/>
-          <button type="button" onClick={() => handleAddTask() }>
-            Add
-          </button>
-        </form>
-        <ul>
-          {tasks.map((task) => (
-            <li key={task.id}>
-              <input
-                type="checkbox"
-                checked={task.status}
-                onChange={() => handleUpdateTask(task.id, task.name, !task.status)}
-              />
-              <span style={{ textDecoration: task.status ? 'line-through' : 'none' }}>
-                {task.name}
-              </span>
-              <button type="button" onClick={() => handleDeleteTask(task.id)}>
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
-      </main>
+      <div className="App-container">
+        <header className="App-header">
+          <h1>Todo List</h1>
+        </header>
+        <main>
+          <form>
+            <input type="text" placeholder="Add a task" onChange={(e) => handleInputChange(e)}/>
+            <button type="button" onClick={() => handleAddTask() }>
+              Add
+            </button>
+          </form>
+          <ul>
+            {tasks.map((task) => (
+              <li key={task.id}>
+                <span style={{ textDecoration: task.status ? 'line-through' : 'none' }}>
+                  {task.name}
+                </span>
+                <input
+                  type="checkbox"
+                  checked={task.status}
+                  onChange={() => handleUpdateTask(task.id, task.name, !task.status)}
+                />
+                <button type="button" onClick={() => handleDeleteTask(task.id)}>
+                  Delete
+                </button>
+              </li>
+            ))}
+          </ul>
+        </main>
+      </div>
     </div>
   );
 };
